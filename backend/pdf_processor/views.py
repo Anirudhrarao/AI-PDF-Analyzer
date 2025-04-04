@@ -11,7 +11,7 @@ class UploadPDFView(APIView):
     parser_classes = (MultiPartParser, FormParser)
 
     def post(self, request, *args, **kwargs):
-        file_serializer = PDFSerializers(data=self.data)
+        file_serializer = PDFSerializers(data=request.data)
 
         if file_serializer.is_valid():
             pdf_instance = file_serializer.save()
